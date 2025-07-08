@@ -4,37 +4,35 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import config
+from app.services.ai_service import RecipeGenerator # Import the generator
 
-# Initialize the SQLAlchemy extension. This object is the gateway to the database.
+# --- Extension Initialization ---
 db = SQLAlchemy()
-
-# Initialize Migrate. This extension handles database schema migrations.
 migrate = Migrate()
+
+# --- AI Service Initialization ---
+# We create a single instance of the RecipeGenerator here.
+# This ensures that the large AI model is loaded into memory only ONCE when the app starts,
+# not on every single request, which is crucial for performance.
+recipe_generator = RecipeGenerator()
 
 def create_app(config_name='default'):
     """
     Application factory function. It creates and configures the Flask app.
-
-    Args:
-        config_name (str): The name of the configuration to use (e.g., 'development').
-
-    Returns:
-        Flask: The configured Flask application instance.
     """
-    # Create the Flask application instance.
     app = Flask(__name__)
     
-    # Load the configuration from the specified config object.
+    # Load configuration
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     
-    # Bind the SQLAlchemy and Migrate extensions to the Flask app instance.
+    # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
     
-    # --- Register Blueprints Here ---
-    # Example:
-    # from .main import main as main_blueprint
-    # app.register_blueprint(main_blueprint)
+    # --- Register Blueprints ---
+    # We will create and register an API blueprint that will use the recipe_generator.
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
     return app
