@@ -36,10 +36,19 @@ body {
   font-size: 1rem;
 }
 
+.nav-button.logout {
+  background-color: #e74c3c;
+}
+
+.nav-login-prompt {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
 /* Homepage */
 .homepage-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
@@ -51,9 +60,9 @@ body {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  flex-basis: 400px;
-  flex-grow: 1;
-  max-width: 500px;
+  flex-basis: 400px; /* Base width */
+  flex-grow: 1;     /* Allow it to grow */
+  max-width: 500px; /* But not too much */
 }
 
 .form-group {
@@ -73,6 +82,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
+  box-sizing: border-box; /* Ensures padding doesn't affect the total width */
 }
 
 .generate-button {
@@ -102,8 +112,8 @@ body {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  flex-basis: 500px;
-  flex-grow: 2;
+  flex-basis: 500px; /* Base width */
+  flex-grow: 2;     /* Allow it to grow more than the form */
   min-height: 300px;
 }
 
@@ -161,6 +171,7 @@ body {
   justify-content: center;
   align-items: center;
   height: calc(100vh - 80px); /* Full height minus navbar */
+  padding: 1rem;
 }
 
 .login-form {
@@ -172,9 +183,19 @@ body {
   max-width: 400px;
 }
 
+/* Auth & Error Messages */
 .error-message {
   color: #c0392b;
   text-align: center;
+  width: 100%;
+}
+
+.toggle-auth {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -195,21 +216,49 @@ body {
   background-color: #2980b9;
 }
 
-.toggle-auth {
-  background: none;
-  border: none;
-  color: #3498db;
-  cursor: pointer;
-  margin-top: 1rem;
-  width: 100%;
+
+/* --- Responsive Design --- */
+/* This section uses media queries to apply different styles based on screen width. */
+
+/* For tablets and smaller devices (up to 992px) */
+@media (max-width: 992px) {
+  .homepage-container {
+    /* Change the main layout to a single column */
+    flex-direction: column;
+    align-items: center; /* Center the items in the column */
+  }
+
+  .form-container, .recipe-display-container {
+    /* Ensure both containers take up the full width available */
+    flex-basis: 100%;
+    max-width: 700px; /* Set a reasonable max-width for readability on tablets */
+  }
 }
 
-.nav-button.logout {
-  background-color: #e74c3c;
-}
+/* For mobile phones (up to 576px) */
+@media (max-width: 576px) {
+  .navbar {
+    /* Reduce padding on the navbar for smaller screens */
+    padding: 1rem;
+    flex-direction: column; /* Stack navbar items vertically */
+    gap: 0.5rem;
+  }
 
-.nav-login-prompt {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-}
+  .homepage-container {
+    /* Reduce padding on the main container */
+    padding: 1rem;
+  }
 
+  .form-container, .recipe-display-container, .login-form {
+    /* Reduce padding inside the cards */
+    padding: 1.5rem;
+  }
+
+  .navbar h1 {
+    font-size: 1.2rem; /* Make the title smaller */
+  }
+
+  body {
+    font-size: 14px; /* Adjust base font size for better readability */
+  }
+}
