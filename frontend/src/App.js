@@ -1,14 +1,20 @@
 import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar';
+import HomePage from './components/HomePage';
+// import LoginPage from './components/LoginPage'; // Uncomment to use login page
 
 function App() {
+  // For now, we will just display the HomePage.
+  // In a real app, you would have routing logic here to switch
+  // between HomePage, LoginPage, etc.
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>AI Recipe Generator</h1>
-        <p>
-          Frontend setup is complete. Ready to build!
-        </p>
-      </header>
+      <Navbar />
+      <main>
+        <HomePage />
+        {/* <LoginPage /> */}
+      </main>
     </div>
   );
 }
