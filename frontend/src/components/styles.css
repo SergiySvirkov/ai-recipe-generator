@@ -194,3 +194,22 @@ body {
 .save-button:hover {
   background-color: #2980b9;
 }
+
+.toggle-auth {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.nav-button.logout {
+  background-color: #e74c3c;
+}
+
+.nav-login-prompt {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
