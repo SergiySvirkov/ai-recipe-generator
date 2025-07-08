@@ -1,11 +1,9 @@
 # app/api/__init__.py
+# This file ties all the API routes together.
 
 from flask import Blueprint
 
-# Create a Blueprint object. 
-# The first argument, 'api', is the name of the blueprint.
-# The second argument, __name__, helps Flask locate the blueprint's resources.
 api = Blueprint('api', __name__)
 
-# Import the routes at the end to avoid circular dependencies.
-from . import routes
+# Import all the route modules to register them with the blueprint
+from . import auth, generator, recipes
