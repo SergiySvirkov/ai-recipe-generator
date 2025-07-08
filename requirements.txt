@@ -4,6 +4,7 @@
 # --- Flask and Web Server ---
 Flask>=2.0
 gunicorn>=20.0 # For production deployment
+Flask-Cors>=3.0 # For handling Cross-Origin Resource Sharing
 
 # --- Database ---
 Flask-SQLAlchemy>=2.5
