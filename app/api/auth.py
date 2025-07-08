@@ -7,6 +7,8 @@ from flask import request, jsonify, current_app
 from . import api
 from .. import db
 from ..models import User
+from .schemas import user_registration_schema
+from marshmallow import ValidationError
 
 def token_required(f):
     """Decorator to protect routes with JWT authentication."""
@@ -30,11 +32,17 @@ def token_required(f):
 
 @api.route('/users/register', methods=['POST'])
 def register():
-    """Endpoint to register a new user."""
-    data = request.get_json()
-    if not data or not data.get('username') or not data.get('password'):
-        return jsonify({'message': 'Username and password are required'}), 400
+    """Endpoint to register a new user with validation."""
+    json_data = request.get_json()
+    if not json_data:
+        return jsonify({"error": "No input data provided"}), 400
     
+    try:
+        # Validate input data
+        data = user_registration_schema.load(json_data)
+    except ValidationError as err:
+        return jsonify({"error": "Validation error", "messages": err.messages}), 400
+
     if User.query.filter_by(username=data['username']).first():
         return jsonify({'message': 'Username already exists'}), 409
 
@@ -43,7 +51,7 @@ def register():
     db.session.commit()
     
     return jsonify({'message': 'New user created!'}), 201
-
+    
 @api.route('/users/login', methods=['POST'])
 def login():
     """Endpoint to log in a user and return a JWT."""
