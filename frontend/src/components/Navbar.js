@@ -1,13 +1,16 @@
 import React from 'react';
-import './styles.css'; // We'll create this CSS file
+import './styles.css';
 
-const Navbar = () => {
-  // This is a simple presentational component for the top navigation bar.
+const Navbar = ({ token, onLogout }) => {
   return (
     <nav className="navbar">
       <h1>AI Recipe Generator</h1>
-      {/* In the future, this button can handle login/logout logic */}
-      <button className="nav-button">Login</button>
+      {token ? (
+        <button onClick={onLogout} className="nav-button logout">Logout</button>
+      ) : (
+        // In a real app, this might link to the login page
+        <p className="nav-login-prompt">Login to save recipes</p>
+      )}
     </nav>
   );
 };
