@@ -1,0 +1,90 @@
+[
+  {
+    "source_url": "https://example.com/recipe/classic-spaghetti-carbonara",
+    "title": "  Classic Spaghetti Carbonara ",
+    "category": "Italian",
+    "ingredients": [
+      "400 grams spaghetti",
+      "150g Pancetta or Guanciale, diced",
+      "4 large egg yolks",
+      "50g Pecorino Romano cheese, freshly grated",
+      "Black pepper",
+      "2 garlic cloves, whole"
+    ],
+    "instructions": [
+      "Boil the spaghetti in salted water according to package directions.",
+      "While the pasta cooks, fry the pancetta in a pan over medium heat until crisp.",
+      "In a separate bowl, whisk together the egg yolks and Pecorino cheese. Season generously with black pepper.",
+      "Drain the pasta, reserving a cup of the pasta water.",
+      "Quickly toss the hot pasta in the pan with the pancetta. Remove from heat.",
+      "Pour the egg and cheese mixture over the pasta, stirring quickly to create a creamy sauce. If it's too thick, add a little reserved pasta water.",
+      "Serve immediately with an extra grating of cheese and pepper."
+    ]
+  },
+  {
+    "source_url": "https://example.com/recipe/thai-green-curry",
+    "title": "Thai Green Chicken Curry",
+    "category": "Thai",
+    "ingredients": [
+      "1 lb chicken breasts, cut into chunks",
+      "400ml can coconut milk",
+      "2 tablespoons green curry paste",
+      "1 cup bamboo shoots",
+      "1 red bell pepper, sliced",
+      "1 tbsp fish sauce",
+      "1 tsp sugar",
+      "Fresh basil leaves for garnish"
+    ],
+    "instructions": [
+      "In a large pot or wok, bring half of the coconut milk to a simmer.",
+      "Add the green curry paste and cook for 1 minute until fragrant.",
+      "Add the chicken and cook until it's no longer pink.",
+      "Pour in the remaining coconut milk, fish sauce, and sugar. Bring to a boil.",
+      "Add the bamboo shoots and red bell pepper. Reduce heat and simmer for 5-7 minutes, until vegetables are tender-crisp.",
+      "Garnish with fresh basil leaves before serving.",
+      "Serve hot with jasmine rice."
+    ]
+  },
+  {
+    "source_url": "https://example.com/recipe/vegan-lentil-soup",
+    "title": "Hearty Vegan Lentil Soup",
+    "category": "Soup",
+    "ingredients": [
+      "1 cup brown or green lentils, rinsed",
+      "2 carrots, chopped",
+      "2 celery stalks, chopped",
+      "1 large onion, chopped",
+      "4 cloves garlic, minced",
+      "8 cups vegetable broth",
+      "1 teaspoon dried thyme",
+      "1 bay leaf",
+      "2 tablespoons olive oil"
+    ],
+    "instructions": [
+      "Heat olive oil in a large pot over medium heat.",
+      "Add the onion, carrots, and celery and cook until softened, about 5-7 minutes.",
+      "Stir in the minced garlic and cook for another minute until fragrant.",
+      "Add the rinsed lentils, vegetable broth, thyme, and bay leaf.",
+      "Bring to a boil, then reduce heat and let it simmer for 40-50 minutes, until lentils are tender.",
+      "Remove the bay leaf before serving.",
+      "Season with salt and pepper to taste."
+    ]
+  },
+  {
+    "source_url": "https://example.com/recipe/duplicate-carbonara-test",
+    "title": "classic spaghetti carbonara",
+    "category": "Pasta",
+    "ingredients": [
+      "400g spaghetti",
+      "150g Bacon",
+      "4 eggs",
+      "50g Parmesan"
+    ],
+    "instructions": [
+      "Boil pasta.",
+      "Fry bacon.",
+      "Mix eggs and cheese.",
+      "Combine everything."
+    ]
+  }
+]
