@@ -1,9 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-const RecipeDisplay = ({ recipe, isLoading }) => {
-  // This component displays the generated recipe.
-  
+const RecipeDisplay = ({ recipe, isLoading, onSave }) => {
   if (isLoading) {
     return (
       <div className="recipe-display-container">
@@ -14,7 +12,6 @@ const RecipeDisplay = ({ recipe, isLoading }) => {
   }
 
   if (!recipe) {
-    // If no recipe has been generated yet, show a placeholder message.
     return (
       <div className="recipe-display-container placeholder">
         <p>Your generated recipe will appear here!</p>
@@ -22,7 +19,6 @@ const RecipeDisplay = ({ recipe, isLoading }) => {
     );
   }
 
-  // If a recipe is available, display its details.
   return (
     <div className="recipe-display-container">
       <h2>{recipe.title}</h2>
@@ -44,6 +40,11 @@ const RecipeDisplay = ({ recipe, isLoading }) => {
           ))}
         </ol>
       </div>
+      
+      {/* Add a button to save the recipe */}
+      <button onClick={onSave} className="save-button">
+        Save Recipe
+      </button>
     </div>
   );
 };
