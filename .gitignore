@@ -1,0 +1,144 @@
+# This .gitignore file is optimized for Python/AI and JavaScript (React/Vue) projects.
+
+# --- Virtual Environments ---
+# Ignore virtual environment folders, as dependencies are set via requirements.txt or pyproject.toml
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Python Files ---
+# Ignore Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distributions and Packages
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Pip installation files
+pip-wheel-metadata/
+pip-selfcheck.json
+
+# Local Poetry settings
+poetry.lock
+
+# --- Database Files ---
+# Ignore local database files. The server will use a different database.
+*.db
+*.sqlite3
+# Ignore database dumps
+*.sql
+*.bak
+
+# --- AI / Machine Learning files ---
+# Ignore large data files, datasets, and trained models. Store them in the cloud.
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.onnx
+*.pb
+*.model
+*.pkl
+*.pickle
+*.joblib
+data/
+datasets/
+models/
+!models/.gitkeep # Allows you to save an empty folder, but ignore its contents
+
+# Cache from libraries, e.g. Hugging Face
+.cache/
+.huggingface/
+
+# --- Frontend files (Node.js / React / Vue) ---
+# Ignore the folder with dependencies, it is restored via `npm install` or `yarn install`
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Frontend builds
+build/
+dist/
+.next/
+.nuxt/
+
+# --- IDE and code editor files ---
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (PyCharm, WebStorm, etc.)
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# --- Operating system files ---
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Logs and configuration files ---
+# Ignore log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore files with secrets and environment variables.
+# Create an example file for them (e.g. .env.example) to be in the repository.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+secrets.ini
+secrets.yaml
+config.py # If it contains sensitive data
+
+# --- Other ---
+# Test coverage report files
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+nosetests.xml
+coverage.xml
