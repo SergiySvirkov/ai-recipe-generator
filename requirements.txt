@@ -26,6 +26,10 @@ transformers>=4.15.0
 # --- Authentication & Security ---
 Flask-Bcrypt>=1.0 # For hashing passwords
 PyJWT>=2.3 # For creating and verifying JSON Web Tokens
+
+# --- Validation ---
+Flask-Marshmallow>=0.14.0
+marshmallow-sqlalchemy>=0.26.0
 datasets>=1.18.0
 scikit-learn>=1.0.0
 
