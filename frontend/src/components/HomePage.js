@@ -1,42 +1,61 @@
+// frontend/src/components/HomePage.js
+
 import React, { useState } from 'react';
 import RecipeGeneratorForm from './RecipeGeneratorForm';
 import RecipeDisplay from './RecipeDisplay';
+import { generateRecipe, saveRecipe } from '../services/api'; // Import API functions
 import './styles.css';
 
 const HomePage = () => {
-  // This component will manage the state for the main page.
-  // 'generatedRecipe' will hold the recipe object returned from the API.
   const [generatedRecipe, setGeneratedRecipe] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // This function will be passed down to the form component.
-  // It will be called when the form is submitted.
-  const handleGenerateRecipe = (formData) => {
-    console.log("Form data received in HomePage:", formData);
+  const handleGenerateRecipe = async (formData) => {
     setIsLoading(true);
-    setGeneratedRecipe(null); // Clear previous recipe
+    setError(null);
+    setGeneratedRecipe(null);
 
-    // Simulate an API call
-    setTimeout(() => {
-      const mockRecipe = {
-        title: "Mock Creamy Chicken Pasta",
-        ingredients: ["1 lb chicken breast", "2 cups pasta", "1 cup heavy cream", "3 cloves garlic"],
-        instructions: [
-          "Cook the pasta according to package directions.",
-          "While pasta is cooking, sauté chicken and garlic in a pan.",
-          "Reduce heat, stir in heavy cream, and simmer for 5 minutes.",
-          "Combine pasta with the chicken and sauce, and serve immediately."
-        ]
-      };
-      setGeneratedRecipe(mockRecipe);
+    try {
+      const response = await generateRecipe(formData.ingredients, formData.diet);
+      setGeneratedRecipe(response.data);
+    } catch (err) {
+      setError('Failed to generate recipe. Please try again.');
+      console.error(err);
+    } finally {
       setIsLoading(false);
-    }, 2000); // 2-second delay to simulate network latency
+    }
+  };
+
+  const handleSaveRecipe = async () => {
+    if (!generatedRecipe) return;
+
+    // Check if user is logged in (by checking for a token)
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please log in to save recipes.');
+      // Here you might redirect to a login page
+      return;
+    }
+
+    try {
+      await saveRecipe(generatedRecipe);
+      alert('Recipe saved successfully!');
+    } catch (err) {
+      alert('Failed to save recipe.');
+      console.error(err);
+    }
   };
 
   return (
     <div className="homepage-container">
       <RecipeGeneratorForm onGenerate={handleGenerateRecipe} isLoading={isLoading} />
-      <RecipeDisplay recipe={generatedRecipe} isLoading={isLoading} />
+      {error && <p className="error-message">{error}</p>}
+      <RecipeDisplay 
+        recipe={generatedRecipe} 
+        isLoading={isLoading} 
+        onSave={handleSaveRecipe}
+      />
     </div>
   );
 };
